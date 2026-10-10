@@ -4,8 +4,8 @@ import json
 # لیستی از سایت‌های عمومی برای مانیتورینگ
 URLS = [
     "https://api.github.com",
-    "https://httpstat.us/200",
-    "https://httpstat.us/500"  # این لینک عمداً خطای 500 برمی‌گرداند
+    "https://varzesh3.com",
+    "https://youtube.com"  # این لینک عمداً خطای 500 برمی‌گرداند
 ]
 
 def check_health(url):

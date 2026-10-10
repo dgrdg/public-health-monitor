@@ -1,0 +1,28 @@
+name: CI - Build Docker Image
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ۱. دریافت آخرین نسخه کد از مخزن
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ۲. راه‌اندازی Buildx برای مدیریت ساخت ایمیج
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # ۳. ساخت ایمیج داکر با استفاده از Dockerfile پروژه
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false  # روی حالت false گذاشتیم تا فعلا فقط تست ساخت انجام شود
+          tags: public-health-monitor:latest
